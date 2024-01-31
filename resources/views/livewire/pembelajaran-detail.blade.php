@@ -20,13 +20,18 @@
                         <p class="mb-2 font-bold text-center uppercase border-b">Daftar materi</p>
                         <div class="px-2">
                             @foreach ($pmb->materi as $item)
-                            <div class="flex gap-2 mb-1.5">
-                                <div class="w-8 px-1 text-2xl bg-gray-100 rounded">{{ $item->nomor}}.</div>
-                                <div class="flex-1">
+                            <div class="flex mb-1.5">
+                                <div class="w-8 px-1 text-2xl bg-gray-300">{{ $item->nomor}}.</div>
+                                <div class="flex-1 px-2 bg-gray-100">
                                     <p class="font-semibold">{{ $item->judul }}</p>
                                     <div>
                                         <span class="text-xs text-gray-400">Youtube ID:</span>
                                         <span>{{ $item->refs[0]['link'] }}</span>
+                                        <a
+                                            href="https://www.youtube.com/watch?v={{ $item->refs[0]['link'] }}"
+                                            target="_blank"
+                                            class="px-2 text-xs italic text-white bg-red-400 rounded-full"
+                                        >watch</a>
                                     </div>
                                 </div>
                                 <div>
@@ -38,7 +43,16 @@
                     </div>
                     <div>
                         <p class="mb-2 font-bold text-center uppercase border-b">Daftar peserta</p>
-                        <div class="px-2 bg-gray-100 border rounded-lg">daftar</div>
+                        <div class="px-2 bg-gray-100 border rounded-lg">
+                            @php $x = 1; @endphp
+                            @foreach ($pmb->kelas->sortByDesc('created_at') as $att)
+                                <div class="flex gap-2">
+                                    <div class="text-right">{{ $x++ }}.</div>
+                                    <div class="flex-1">{{ $att->user->name }}</div>
+                                    <div>{{ $att->created_at }}</div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

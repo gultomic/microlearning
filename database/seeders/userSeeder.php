@@ -28,6 +28,27 @@ class userSeeder extends Seeder
             'email_verified_at'=>Carbon::now(),
             'access' => true,
             'remember_token' => Str::random(10),
+            'refs' => ['telp' => '0998877111']
+        ]);
+
+        User::create([
+            'name' => 'Pencaker',
+            'email' => 'pencaker@example.com',
+            'password'=> Hash::make('login123'),
+            'email_verified_at'=>Carbon::now(),
+            'access' => true,
+            'remember_token' => Str::random(10),
+            'refs' => ['telp' => '0887766222']
+        ]);
+
+        User::create([
+            'name' => 'Tes',
+            'email' => 'tes@example.com',
+            'password'=> Hash::make('login123'),
+            'email_verified_at'=>Carbon::now(),
+            'access' => true,
+            'remember_token' => Str::random(10),
+            'refs' => ['telp' => '0776655333']
         ]);
 
         User::create([
@@ -38,6 +59,7 @@ class userSeeder extends Seeder
             'access' => true,
             'remember_token' => Str::random(10),
             'role' => 'admin',
+            'refs' => ['telp' => 'xxxxxxxxx']
         ]);
 
         User::create([
@@ -48,6 +70,7 @@ class userSeeder extends Seeder
             'access' => true,
             'remember_token' => Str::random(10),
             'role' => 'admin',
+            'refs' => ['telp' => '---------']
         ]);
     }
 }

@@ -16,6 +16,7 @@ layout('layouts.guest');
 state([
     'name' => '',
     'email' => '',
+    'telp' => '',
     'password' => '',
     'password_confirmation' => ''
 ]);
@@ -23,6 +24,7 @@ state([
 rules([
     'name' => ['required', 'string', 'max:255'],
     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+    'telp' => ['required', 'string', 'max:13'],
     'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
 ]);
 
@@ -31,7 +33,24 @@ $register = function () {
 
     $validated['password'] = Hash::make($validated['password']);
 
-    event(new Registered($user = User::create($validated)));
+    $insert = [
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'password' => $validated['password'],
+        'refs' => [
+            'telp' => $validated['telp']
+        ],
+    ];
+
+    // event(new Registered($user = User::create($validated)));
+    event(new Registered($user = User::create([
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'password' => $validated['password'],
+        'refs' => [
+            'telp' => $validated['telp']
+        ]
+    ])));
 
     Auth::login($user);
 
@@ -54,6 +73,13 @@ $register = function () {
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" class="block w-full mt-1" type="email" name="email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mt-4">
+            <x-input-label for="telp" :value="__('Telp')" />
+            <x-text-input wire:model="telp" id="telp" class="block w-full mt-1" type="text" name="telp" required autocomplete="phone" />
+            <x-input-error :messages="$errors->get('telp')" class="mt-2" />
         </div>
 
         <!-- Password -->

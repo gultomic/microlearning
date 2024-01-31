@@ -28,7 +28,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(func
     Route::view('/dashboard', 'admin-dashboard')->name('dashboard');
     // Route::view('main/{mcid}/detail', 'pembelajaran')->name('micl.detail');
     Route::get('main/{mcid}/detail', App\Livewire\MicrolearningDetail::class)->name('micl.detail');
-    Route::get('pembelajaran/{pbid}/detail', App\Livewire\PembelajaranDetail::class)->name('pmbj.detail');
+    Route::get('pembelajaran/{pbid}/list', App\Livewire\PembelajaranDetail::class)->name('pmbj.detail');
 });
 
 

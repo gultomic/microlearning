@@ -40,7 +40,7 @@ class PembelajaranTable extends LivewireTable
             Column::make(__('Actions'), function (Model $model): string {
                 return '
                     <a class="underline" href="/admin/pembelajaran/'.$model->getKey().'/show" wire:navigate>Edit</a>
-                    <a class="underline" href="/admin/pembelajaran/'.$model->getKey().'/detail" wire:navigate>Materi</a>
+                    <a class="underline" href="/admin/pembelajaran/'.$model->getKey().'/list" wire:navigate>Materi</a>
                 ';
             })
                 ->clickable(false)
