@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+/* .swiper {
+    width: 600px;
+    height: 300px;
+} */
+
+/* .swiper-wrapper {
+    @apply h-scre;
+} */
