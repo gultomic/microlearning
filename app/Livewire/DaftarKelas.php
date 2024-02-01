@@ -12,10 +12,9 @@ class DaftarKelas extends Component
 
     public function mount()
     {
-        $this->list = Kelas::with('pembelajaran.materi')
+        $this->list = Kelas::with('pembelajaran.materi.status', 'status')
             ->where('user_id', Auth::user()->id)
-            ->get()
-            ;
+            ->get();
     }
 
     public function render()

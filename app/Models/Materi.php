@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Materi extends Model
 {
@@ -12,7 +13,7 @@ class Materi extends Model
 
     protected $table = 'materi';
     protected $guarded = ['id'];
-    protected $appends =['status'];
+    // protected $appends =['status'];
     protected $casts = [
         'refs' => AsCollection::class,
     ];
@@ -22,10 +23,20 @@ class Materi extends Model
         return $this->belongsTo(Pembelajaran::class);
     }
 
-    public function getStatusAttribute(): KelasMateri | null
+    /**
+     * Get all of the progress for the Materi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function status(): HasMany
     {
-        return KelasMateri::where('kelas_id', 1)
-            ->where('materi_id', $this->id)
-            ->first();
+        return $this->hasMany(KelasMateri::class, 'materi_id', 'id');
     }
+
+    // public function getProgressAttribute(): KelasMateri | null
+    // {
+    //     return $this->status->where('user_id', 1)
+    //         ->where('materi_id', $this->id)
+    //         ->first();
+    // }
 }

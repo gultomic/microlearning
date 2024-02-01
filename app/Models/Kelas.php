@@ -26,7 +26,7 @@ class Kelas extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function progress()
+    public function status()
     {
         return $this->hasMany(KelasMateri::class, 'kelas_id', 'id');
     }

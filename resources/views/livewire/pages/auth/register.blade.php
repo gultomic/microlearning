@@ -33,16 +33,6 @@ $register = function () {
 
     $validated['password'] = Hash::make($validated['password']);
 
-    $insert = [
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'password' => $validated['password'],
-        'refs' => [
-            'telp' => $validated['telp']
-        ],
-    ];
-
-    // event(new Registered($user = User::create($validated)));
     event(new Registered($user = User::create([
         'name' => $validated['name'],
         'email' => $validated['email'],

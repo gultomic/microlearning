@@ -35,5 +35,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(func
 require __DIR__.'/auth.php';
 
 Route::get('/tes', function(){
-    return App\Models\Pembelajaran::withCount('kelas')->get();
+    return App\Models\Kelas::with('pembelajaran.materi.progres')
+            ->where('user_id', 1)
+            ->get()
+            ;
 });

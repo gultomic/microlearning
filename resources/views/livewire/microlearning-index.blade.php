@@ -12,7 +12,6 @@
                 >
                     <p class="text-lg font-black">{{ $item->judul }}</p>
                     <div>{{ $item->pembelajaran->count() }} Pembelajaran</div>
-                    {{-- <div>{{ $item->pembelajaran->sum('count_kelas') }} Mengikuti</div> --}}
                 </a>
             @endforeach
         </div>
