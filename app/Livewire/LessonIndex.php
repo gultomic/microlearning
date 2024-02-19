@@ -11,17 +11,16 @@ class LessonIndex extends Component
 {
     public $pbid;
     public $pmb;
-    public $ytid;
     public $material;
     public $arr;
     public $next;
     public $prev;
     public $index;
+    public $kelas;
 
     public function mount($pbid, $material)
     {
         $this->pmb = PB::with('materi')->find($pbid);
-        $this->ytid = $this->getytid();
         $this->arr = $this->pmb->materi->pluck('id')->toArray();
         $this->index = array_search($this->material, $this->arr);
 
@@ -31,7 +30,11 @@ class LessonIndex extends Component
 
     public function render()
     {
-        return view('livewire.lesson-index');
+        $gyt = $this->getytid();
+        return view('livewire.lesson-index', [
+            'ytid' => $gyt->refs[0]['link'],
+            'intro' => $gyt->refs[0]['intro'],
+        ]);
     }
 
     public function getytid()
@@ -39,7 +42,8 @@ class LessonIndex extends Component
         return $this->pmb->materi
             ->where('id', $this->material)
             ->first()
-            ->refs[0]['link'];
+            // ->refs[0]['link']
+            ;
     }
 
     public function navigation()
@@ -78,10 +82,12 @@ class LessonIndex extends Component
         ])->first();
 
         if($kelas == null) {
-            Kelas::create([
+            $kelas = Kelas::create([
                 'user_id' => $user->id,
                 'pembelajaran_id' => $this->pbid,
             ]);
         }
+
+        $this->kelas = $kelas;
     }
 }

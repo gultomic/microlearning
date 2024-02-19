@@ -3,11 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Casts\AsCollection;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,16 @@ class User extends Authenticatable
         'password' => 'hashed',
         'refs' => AsCollection::class,
     ];
+
+    /**
+     * Get all of the kelas for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function kelas(): HasMany
+    {
+        return $this->hasMany(Kelas::class);
+    }
 
     public function getRedirectRoute()
     {

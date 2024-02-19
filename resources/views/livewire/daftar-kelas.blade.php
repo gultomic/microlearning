@@ -22,12 +22,12 @@
 
                     <p class="font-bold uppercase">{{ $item->pembelajaran->judul }}</p>
                     <p>Progres belajar: </p>
+
                     @foreach ($item->pembelajaran->materi as $materi)
                         <div>
                             {{ $materi->nomor}}.
                             {{ $materi->judul }}
-                            {{-- {{ $materi->status }} --}}
-                            @if ($materi->status->where('kelas_id', $materi->id)->count() != 0)
+                            @if ($materi->status->where('kelas_id', $item->id)->count() != 0)
                                 <span class="text-xs italic text-blue-500">done</span>
                             @else
                                 <span class="text-xs italic text-red-500">not yet</span>
@@ -36,9 +36,11 @@
                     @endforeach
 
                     @if ($ts < 1)
-                        <a
+                    <div class="pt-2">
+                        <a class="inline-flex items-center px-6 py-1 bg-blue-600 rounded-full text-blue-50"
                             href="{{ route('lesson.index', ['pbid' => $item->pembelajaran->id, 'material' => $ls]) }}"
                         >Lanjutkan belajar!</a>
+                    </div>
                     @endif
                 </div>
             </div>

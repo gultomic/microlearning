@@ -80,7 +80,8 @@ class mainSeeder extends Seeder
                     [
                         'id' => 1,
                         'link' => $ytid[rand(0,8)],//$faker->url(),
-                        'type' => 'youtube'
+                        'type' => 'youtube',
+                        'intro' => $faker->paragraphs(2, true)
                     ]
                 ]
             ]);
