@@ -16,7 +16,7 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-        <div class="relative min-h-screen bg-gray-100 bg-center sm:flex">
+        <div class="relative min-h-screen bg-gray-100 bg-center">
             @if (Route::has('login'))
                 <livewire:welcome.navigation />
             @endif
@@ -30,7 +30,10 @@
 
                 <livewire:landing />
             </div>
+
+            @include('components.footer')
         </div>
+
         @livewireScripts
     </body>
 </html>

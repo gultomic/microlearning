@@ -71,4 +71,15 @@ Alpine.data("playerData", (data) => ({
     },
 }));
 
-// Alpine.start();
+Alpine.data("materiData", (data) => ({
+    vid: "",
+    viewVideo(ytid) {
+        console.log(ytid);
+        YouTubePlayer("ytplayer", {
+            videoId: ytid,
+            playerVars: {
+                controls: 1,
+            },
+        });
+    },
+}));

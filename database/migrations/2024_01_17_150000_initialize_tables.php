@@ -22,6 +22,7 @@ return new class extends Migration
         Schema::create('microlearning', function (Blueprint $table) {
             $table->id();
             $table->string('judul')->unique();
+            $table->boolean('active')->default(false);
             $table->json('refs')->nullable();
             $table->timestamps();
         });

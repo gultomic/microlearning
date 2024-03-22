@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,12 +14,3 @@
 [x-cloak] {
     display: none;
 }
-
-/* .swiper {
-    width: 600px;
-    height: 300px;
-} */
-
-/* .swiper-wrapper {
-    @apply h-scre;
-} */

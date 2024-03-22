@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,6 +30,13 @@
 
             <!-- Page Content -->
             <main>
+                @if (session('success'))
+                <div class="flex justify-center pt-1.5 text-sm place-items-end">
+                    <span class="px-2 font-light tracking-tighter bg-blue-600 border-blue-600 rounded-l-md text-sky-100">Success</span>
+                    <span class="px-2 text-xs italic border-b border-blue-600">{{ session('success') }}</span>
+                </div>
+                @endif
+
                 {{ $slot }}
             </main>
         </div>

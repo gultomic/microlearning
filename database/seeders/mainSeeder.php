@@ -30,6 +30,7 @@ class mainSeeder extends Seeder
     {
         $mic = Microlearning::create([
             'judul' => 'Microlearning pertama.',
+            'active' => true,
             'refs' => [
                 'color' => '#0369a1'
             ]
