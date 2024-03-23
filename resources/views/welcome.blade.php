@@ -16,11 +16,9 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-        <div class="relative min-h-screen bg-gray-100 bg-center">
-            @if (Route::has('login'))
-                <livewire:welcome.navigation />
-            @endif
+        @include('components.header')
 
+        <div class="relative min-h-screen bg-center">
             <div class="p-2 mx-auto max-w-7xl lg:p-8">
                 <div class="flex justify-center">
                     <x-application-logo class="w-20 h-20 text-indigo-700 fill-current" />

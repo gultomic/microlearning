@@ -1,4 +1,4 @@
-<footer class="block py-12 bg-gray-200 lg:px-28">
+<footer class="block px-1 py-12 bg-gray-200 lg:px-28">
     <div class="grid gap-6 mx-auto mb-12 md:grid-cols-3">
         <div>
             <a href="/" wire:navigate>
@@ -25,7 +25,7 @@
 
     <div class="flex justify-center py-2 border border-t-gray-300">
         <!--begin::Copyright-->
-        <span class="font-light text-gray-400">©<?php echo date('Y'); ?> Pusat Pasar Kerja. Hak Cipta Dilindungi Undang-Undang.</span>
+        <span class="text-sm font-light text-gray-400">©<?php echo date('Y'); ?> Pusat Pasar Kerja. Hak Cipta Dilindungi Undang-Undang.</span>
         <!--end::Copyright-->
     </div>
 </footer>
