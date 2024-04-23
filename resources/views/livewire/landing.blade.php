@@ -4,7 +4,7 @@
     </div>
 
     <div class="py-4">
-        <p class="pb-2 text-lg font-bold text-center underline sm:text-justify">Microlearning</p>
+        <p class="py-4 text-2xl font-semibold tracking-wide text-center sm:text-justify">Microlearning</p>
 
         <div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:mx-8">
             @foreach ($mcl as $item)
@@ -32,6 +32,25 @@
                 </p>
             </a>
             @endforeach
+        </div>
+    </div>
+
+    <div class="py-4">
+        <p class="py-4 text-2xl font-semibold tracking-wide text-center sm:text-justify">Layanan Kami</p>
+
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 justify-stretch">
+            <a href="https://paskerid.kemnaker.go.id/layanan-detail/4273f2f2-ded5-4710-9931-31a78adf0112" class="py-8 border rounded-md hover:border-gray-400 group">
+                <img class="h-12 mx-auto" src="https://paskerid.kemnaker.go.id/storage/4273f2f2-ded5-4710-9931-31a78adf0112_Logo SIAPkerja.png" alt="siapkerja">
+                <p class="pt-4 text-center group-hover:text-blue-600">SIAPKerja</p>
+            </a>
+            <a href="https://paskerid.kemnaker.go.id/layanan-detail/ea93475e-54d2-4358-b295-9a72d4c77015" class="py-8 border rounded-md hover:border-gray-400 group">
+                <img class="h-12 mx-auto" src="https://paskerid.kemnaker.go.id/storage/ea93475e-54d2-4358-b295-9a72d4c77015_Logo Karirhub.png" alt="siapkerja">
+                <p class="pt-4 text-center group-hover:text-blue-600">Karirhub</p>
+            </a>
+            <a href="https://paskerid.kemnaker.go.id/layanan-detail/173e7033-8219-4ddf-809c-ec5f067d718d" class="py-8 border rounded-md hover:border-gray-400 group">
+                <img class="h-12 mx-auto" src="https://paskerid.kemnaker.go.id/storage/173e7033-8219-4ddf-809c-ec5f067d718d_Logo Talenthub.png" alt="siapkerja">
+                <p class="pt-4 text-center group-hover:text-blue-600">Talenthub</p>
+            </a>
         </div>
     </div>
 </div>
