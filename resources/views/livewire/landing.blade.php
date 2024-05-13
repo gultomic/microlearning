@@ -1,5 +1,5 @@
 <div>
-    <div class="py-4">
+    <div class="py-10 text-xl tracking-wide text-justify">
         {!! $body !!}
     </div>
 

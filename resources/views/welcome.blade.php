@@ -24,7 +24,16 @@
                     <x-application-logo class="w-20 h-20 text-indigo-700 fill-current" />
                 </div>
 
-                <p class="text-xl font-black text-center md:text-5xl">MICROLEARNING</p>
+                <p class="inline-flex justify-center w-full mx-auto text-4xl font-bold tracking-wider md:text-8xl">
+                    <span>MICRO</span>
+                    <span class="text-sky-600">LEARNING</span>
+                </p>
+
+                <div class="justify-center p-6 mx-auto font-bold lg:flex lg:divide-x-4 divide-stone-300 lg:text-2xl">
+                    <div class="px-6 text-center">Literasi Dunia Kerja</div>
+                    <div class="px-6 text-center">Literasi Pengembangan Diri</div>
+                    <div class="px-6 text-center">Literasi Karir</div>
+                </div>
 
                 <livewire:landing />
             </div>
