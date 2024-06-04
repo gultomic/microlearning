@@ -31,10 +31,15 @@
             <!-- Page Content -->
             <main>
                 @if (session('success'))
-                <div class="flex justify-center pt-1.5 text-sm place-items-end">
-                    <span class="px-2 font-light tracking-tighter bg-blue-600 border-blue-600 rounded-l-md text-sky-100">Success</span>
-                    <span class="px-2 text-xs italic border-b border-blue-600">{{ session('success') }}</span>
-                </div>
+                    <div class="flex justify-center pt-1.5 text-sm place-items-end">
+                        <span class="px-2 font-light tracking-tighter bg-blue-600 border-blue-600 rounded-l-md text-sky-100">Success</span>
+                        <span class="px-2 text-xs italic border-b border-blue-600">{{ session('success') }}</span>
+                    </div>
+                @elseif (session('error'))
+                    <div class="flex justify-center pt-1.5 text-sm place-items-end">
+                        <span class="px-2 font-light tracking-tighter bg-red-600 border-red-600 rounded-l-md text-sky-100">Success</span>
+                        <span class="px-2 text-xs italic border-b border-red-600">{{ session('error') }}</span>
+                    </div>
                 @endif
 
                 {{ $slot }}
