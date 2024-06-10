@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
+        "mews/captcha": "^3.3",
         "power-components/livewire-powergrid": "^5.1",
         "ramonrietdijk/livewire-tables": "^3.9"
     },

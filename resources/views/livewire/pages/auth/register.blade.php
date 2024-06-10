@@ -18,7 +18,7 @@ state([
     'email' => '',
     'telp' => '',
     'password' => '',
-    'password_confirmation' => ''
+    'password_confirmation' => '',
 ]);
 
 rules([
