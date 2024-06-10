@@ -30,6 +30,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(func
     Route::get('main/{mcid}/detail', App\Livewire\MicrolearningDetail::class)->name('micl.detail');
     Route::get('main/{mcid}/pembelajaran/create', App\Livewire\Admin\PembelajaranCreate::class)->name('micl.create-pembelajaran');
     Route::get('pembelajaran/{pbid}/list', App\Livewire\PembelajaranDetail::class)->name('pmbj.detail');
+    Route::get('pembelajaran/{pbid}/detail', App\Livewire\Admin\PembelajaranEdit::class)->name('pmbj.edit');
     Route::get('pembelajaran/{pbid}/materi/create', App\Livewire\Admin\MateriCreate::class)->name('pmbj.create-materi');
     Route::get('pembelajaran/{mid}/materi/detail', App\Livewire\Admin\MateriDetail::class)->name('pmbj.detail-materi');
 });

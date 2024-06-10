@@ -25,8 +25,23 @@ class PembelajaranDetail extends Component
 
     public function destroy()
     {
+        $nomor = $this->pmb->nomor;
+        $jumlah_pembelajaran = $this->pmb->microlearning->pembelajaran->count();
+
         try {
+            if ($nomor < $jumlah_pembelajaran) {
+                $compile = $this->pmb->microlearning->pembelajaran()
+                    ->where("nomor", ">", $nomor)->get();
+
+                foreach ($compile as $key) {
+                    $key->update([
+                        "nomor" => $key->nomor - 1,
+                    ]);
+                }
+            }
+
             $this->pmb->delete();
+
             session()->flash('success', 'Berhasil menghapus pembelajaran!');
         } catch (Exception $e) {
             session()->flash('error', $e->getMessage());
