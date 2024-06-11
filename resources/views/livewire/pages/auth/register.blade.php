@@ -14,11 +14,11 @@ use function Livewire\Volt\state;
 layout('layouts.guest');
 
 state([
-    'name' => '',
-    'email' => '',
-    'telp' => '',
-    'password' => '',
-    'password_confirmation' => '',
+    'name' => 'Guest me',
+    'email' => 'guest@example.com',
+    'telp' => '0899121200333',
+    'password' => 'login123',
+    'password_confirmation' => 'login123',
 ]);
 
 rules([
@@ -26,6 +26,7 @@ rules([
     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
     'telp' => ['required', 'string', 'max:13'],
     'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+    'g-recaptcha-response' => ['required'],
 ]);
 
 $register = function () {
@@ -47,6 +48,7 @@ $register = function () {
     $this->redirect(RouteServiceProvider::HOME, navigate: true);
 };
 
+$captcha = 0;
 ?>
 
 <div>
@@ -95,6 +97,25 @@ $register = function () {
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            {!! NoCaptcha::renderJs() !!}
+            {!! NoCaptcha::display() !!}
+
+            @if ($errors->has('g-recaptcha-response'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+            @endif
+
+            <button type="submit"
+              data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"
+              data-callback='handle'
+              data-action='submit'
+               class="g-recaptcha some-button-style">
+               Submit
+      </button>
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
                 {{ __('Already registered?') }}
@@ -105,4 +126,15 @@ $register = function () {
             </x-primary-button>
         </div>
     </form>
+
+    <script>
+        function handle(e) {
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'submit'})
+                    .then(function (token) {
+                        @this.set('captcha', token);
+                    });
+            })
+        }
+    </script>
 </div>
