@@ -25,7 +25,7 @@
                     </svg>
                 </a>
                 <a
-                    href="#"
+                    href="{{ route('admin.micl.edit', ['mcid' => $item->id]) }}"
                     class="text-orange-500"
                     wire:navigate
                 >
