@@ -27,6 +27,7 @@ Route::post('lesson-progress', [LearningController::class, 'progress'])
 Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::view('/dashboard', 'admin-dashboard')->name('dashboard');
     Route::get('main/create', App\Livewire\Admin\MicrolearningCreate::class)->name('micl.create');
+    Route::get('main/{mcid}/edit', App\Livewire\Admin\MicrolearningEdit::class)->name('micl.edit');
     Route::get('main/{mcid}/detail', App\Livewire\MicrolearningDetail::class)->name('micl.detail');
     Route::get('main/{mcid}/pembelajaran/create', App\Livewire\Admin\PembelajaranCreate::class)->name('micl.create-pembelajaran');
     Route::get('pembelajaran/{pbid}/list', App\Livewire\PembelajaranDetail::class)->name('pmbj.detail');
